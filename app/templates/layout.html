@@ -11,7 +11,7 @@
 </head>
 <body>
     <header class="head container">
-        <img src="../static/img/logoBw.svg" alt="Logo de SkyCast" class="head__logo">
+        <a href="{{url_for('index')}}"><img src="../static/img/logoBw.svg" alt="Logo de SkyCast" class="head__logo"></a>
         <nav class="head__navigation">
             <img src="../static/img/nav-icon.svg" alt="icono de navegación" class="movil-menu-icon">
             <ul class="head__navigation_ul">{% block nav_list %} {% endblock %}</ul>
@@ -21,7 +21,42 @@
         {%block body_content%}{%endblock%}
 
         <footer class="footer container">
-            {%block footer_content%}{%endblock%}
+            <nav class="footer__nav">
+                <div class="navigation_div">
+                    <h3 class="div__navigation__titulo">Explora</h3>
+                    <ul class="footer_navigation_lista">
+                        <li class="footer__enlace"><a href="#">SES</a></li>
+                        <li class="footer__enlace"><a href="#">Winters</a></li>
+                        <li class="footer__enlace"><a href="#">ARMA</a></li>
+                    </ul>
+                </div>
+                <div class="navigation_div">
+                    <h3 class="div__navigation__titulo">Links Rapidos</h3>
+                    <ul class="footer_navigation_lista">
+                        <li class="footer__enlace"><a href="#">Registro</a></li>
+                        <li class="footer__enlace"><a href="#">Iniciar Sesión</a></li>
+                        <li class="footer__enlace"><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="navigation_div">
+                    <h3 class="div__navigation__titulo">Soporte</h3>
+                    <ul class="footer_navigation_lista">
+                        <li class="footer__enlace"><a href="#">Preguntas Frecuentes</a></li>
+                        <li class="footer__enlace"><a href="#">Condiciones</a></li>
+                        <li class="footer__enlace"><a href="#">Privacidad</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="div__social__copy">
+                <div class="footer__div__social">
+                    <ul class="footer__social">
+                        {%block footer_content%}{%endblock%}
+                    </ul>
+                </div>
+                <div class="footer__copy">
+                    <p>&#169; 2023 SkyCast. Todos los derechos reservados.</p>
+                </div>
+            </div>
         </footer>
     </main>
     

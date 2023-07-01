@@ -1,0 +1,11 @@
+.lista__prueba{
+    background-color: var(--background-negro);
+}
+.lista__prueba__ul{
+    padding-top: 7.5rem;
+}
+
+.lista__prueba__vista{
+    padding: 1% 1rem;
+    color: var(--background-blanco);
+}

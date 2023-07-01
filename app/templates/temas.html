@@ -1,0 +1,37 @@
+{% extends './layout.html' %}
+
+{% block tittle %} Home {% endblock %}
+{%block links_head%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/temas.css')}}">
+{%endblock%}
+
+{% block nav_list %} 
+<li class="head__enlace"><a href="#">Temas</a></li>
+<li class="head__enlace"><a href="#">Sobre</a></li>
+<li class="head__enlace"><a href="#">Contacto</a></li>
+<li class="head__enlace boton__header"><a href="#">Iniciar Sesión</a></li>
+
+{% endblock %}
+
+{% block body_content %}
+    <section class=" lista__prueba container">
+        <ul class="lista__prueba__ul">
+            {% if pronosticos|length > 0 %}
+            {% for pron, descrip in pronosticos.items() %}
+            <li class="lista__prueba__vista">{{pron}} -> {{descrip}}</li>
+            {% endfor %}
+            {% else %}
+            <li class="lista__prueba__vista">La lista esta vacía</li>
+            {% endif %}
+        </ul>
+    </section>
+    <section class="datos__por__get">
+        <h2 class="valor__recibido__get">{{valor}}</h2>
+    </section>
+{%endblock%}
+{%block footer_content%}
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/linkedin-icon.png" alt="Icono LinkedIn" class="footer__media__img"></a></li>
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/university-icon.png" alt="Icono Universidad" class="footer__media__img"></a></li>
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/github-Icon.png" alt="Icono Github" class="footer__media__img"></a></li>
+{%endblock%}

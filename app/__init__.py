@@ -1,15 +1,51 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-data_home = {
-    "titulo_pagina": 'home',
-    "titulo_h1": 'Hola Mundo' 
-}
+
 
 @app.route('/')
 def index():
-    return render_template('index.html', home = data_home)
+    print('estamos realizando la petición en index...')
+    data = {
+    "titulo_pagina": 'home',
+    "titulo_h1": 'Hola Mundo' 
+    }
+    return render_template('index.html', home = data)
+
+
+@app.before_request
+def before_request():
+    print('antes de la petición')
+
+
+@app.after_request
+def after_request(response):
+    print('después de la petición')
+    return response
+
+
+@app.route('/temas')
+def temas():
+    print('estamos realizando la petición en temas...')
+    data = {
+    "titulo_pagina": 'temas',
+    "titulo_h1": 'Los temas que la plataforma propone son:' 
+    }
+    pronosticos = {
+        'Pronóstico SES': ['Simple Exponential Smoothing (SES) es un método de pronóstico que asigna un peso exponencial decreciente a las observaciones pasadas. Es útil para datos con tendencia y sin patrones estacionales.'],
+        'Pronóstico Holt': ['Holt es un método de pronóstico que extiende el modelo SES al incorporar un componente de tendencia. Es útil cuando los datos tienen una tendencia lineal.'],
+        'Pronóstico Winters': ['El método de pronóstico de Winters es adecuado para datos con tendencia y estacionalidad. Utiliza un modelo aditivo o multiplicativo para pronosticar datos estacionales.'],
+        'Pronóstico ARIMA': ['El modelo ARIMA (Autoregressive Integrated Moving Average) es un enfoque ampliamente utilizado para pronósticos de series temporales. Combina componentes autoregresivos, de media móvil y de diferenciación.'],
+        'Pronóstico SARIMA': ['El modelo SARIMA (Seasonal ARIMA) es una extensión del modelo ARIMA que también tiene en cuenta la estacionalidad de los datos. Es útil cuando los datos exhiben patrones estacionales.'],
+        'Pronóstico ARIMAX': ['El modelo ARIMAX es similar al modelo ARIMA, pero también incluye variables exógenas como predictores. Es útil cuando se dispone de información adicional que puede mejorar el pronóstico.'],
+        'Pronóstico Prophet': ['Prophet es una librería de código abierto desarrollada por Facebook para pronósticos de series temporales. Utiliza un modelo aditivo que incluye tendencia, estacionalidad y efectos de días festivos.'],
+        'Pronóstico LSTM': ['Las redes neuronales recurrentes de memoria a largo plazo (LSTM) son una arquitectura de aprendizaje profundo que puede ser utilizada para pronósticos de series temporales. Es capaz de capturar relaciones de largo plazo en los datos.'],
+        'Pronóstico Random Forest': ['Random Forest es un algoritmo de aprendizaje automático que se puede utilizar para pronósticos. Combina múltiples árboles de decisión para obtener un pronóstico final.']
+    }
+    valor1 = request.args.get('valor1')
+    return render_template('temas.html', temas = data , pronosticos = pronosticos, valor = valor1)
+
 
 @app.route('/login')
 def login():
@@ -32,4 +68,5 @@ def modelo_tres():
     pass
 
 if __name__ == '__main__':
+    app.add_url_rule('/', view_func=index)
     app.run(debug=True, port=7777)

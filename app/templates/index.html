@@ -6,9 +6,11 @@
 {%endblock%}
 
 {% block nav_list %} 
-<li class="head__enlace"><a href="#">Métodos</a></li>
-<li class="head__enlace"><a href="#">Login</a></li>
-<li class="head__enlace"><a href="#">Register</a></li>
+<li class="head__enlace"><a href="{{url_for('temas')}}">Temas</a></li>
+<li class="head__enlace"><a href="#">Sobre</a></li>
+<li class="head__enlace"><a href="#">Contacto</a></li>
+<li class="head__enlace boton__header"><a href="#">Iniciar Sesión</a></li>
+
 {% endblock %}
 
 {% block body_content %}
@@ -69,44 +71,8 @@
     </section>
 {%endblock%}
 {%block footer_content%}
-<nav class="footer__nav">
-    <div class="navigation_div">
-        <h3 class="div__navigation__titulo">Explora</h3>
-        <ul class="footer_navigation_lista">
-            <li class="footer__enlace"><a href="#">SES</a></li>
-            <li class="footer__enlace"><a href="#">Winters</a></li>
-            <li class="footer__enlace"><a href="#">ARMA</a></li>
-        </ul>
-    </div>
-    <div class="navigation_div">
-        <h3 class="div__navigation__titulo">Links Rapidos</h3>
-        <ul class="footer_navigation_lista">
-            <li class="footer__enlace"><a href="#">Registro</a></li>
-            <li class="footer__enlace"><a href="#">Iniciar Sesión</a></li>
-            <li class="footer__enlace"><a href="#">Contacto</a></li>
-        </ul>
-    </div>
-    <div class="navigation_div">
-        <h3 class="div__navigation__titulo">Soporte</h3>
-        <ul class="footer_navigation_lista">
-            <li class="footer__enlace"><a href="#">Preguntas Frecuentes</a></li>
-            <li class="footer__enlace"><a href="#">Condiciones</a></li>
-            <li class="footer__enlace"><a href="#">Privacidad</a></li>
-        </ul>
-    </div>
-</nav>
-<div class="div__social__copy">
-    <div class="footer__div__social">
-        <ul class="footer__social">
-            <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/linkedin-icon.png" alt="Icono LinkedIn" class="footer__media__img"></a></li>
-            <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/university-icon.png" alt="Icono Universidad" class="footer__media__img"></a></li>
-            <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/github-Icon.png" alt="Icono Github" class="footer__media__img"></a></li>
-        </ul>
-    </div>
-    <div class="footer__copy">
-        <p>&#169; 2023 SkyCast. Todos los derechos reservados.</p>
-    </div>
-</div>
-
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/linkedin-icon.png" alt="Icono LinkedIn" class="footer__media__img"></a></li>
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/university-icon.png" alt="Icono Universidad" class="footer__media__img"></a></li>
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/github-Icon.png" alt="Icono Github" class="footer__media__img"></a></li>
 {%endblock%}
 

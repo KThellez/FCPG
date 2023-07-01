@@ -299,6 +299,24 @@ section.curiosidades.container{
 }
 
 @media screen and (min-width: 768px) {
+    .head__enlace{
+        font-weight: 300;
+        font-family: var(--spline-mono-sans);
+        font-size: 1rem;
+        
+    }
+    .boton__header{
+        text-align: center;
+        display: block;
+        width: 100%;
+        max-width: 530px;
+        box-sizing: border-box;
+        padding: 1rem 1rem;
+        border: 1px solid var(--boton-border-azul-claro);
+        background-color: var(--boton-azul-oscuro);
+        color: var(--background-blanco);
+        border-radius: 15px;
+    }
     .movil-menu-icon {
         display: none;
     }
@@ -382,5 +400,11 @@ section.curiosidades.container{
     .div__social__copy{
         display: flex;
         flex-direction: column;
+        align-self: start;
     }
+    .footer__div__social {
+        display: flex;
+        margin-top: 0;
+    }
+    
 }
