@@ -6,14 +6,24 @@
     <title>{% block tittle %} {% endblock %}</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/reset.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/bases.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Montserrat:wght@300;400;700&family=Old+Standard+TT:wght@400;700&family=Open+Sans:wght@300;400;700&family=Sirin+Stencil&family=Spline+Sans+Mono:wght@300;400;700&family=Spline+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    {%block links_head%}{%endblock%}
 </head>
 <body>
     <header class="head container">
         <img src="../static/img/logoBw.svg" alt="Logo de SkyCast" class="head__logo">
         <nav class="head__navigation">
-            <ul>{% block nav_list %} {% endblock %}</ul>
+            <img src="../static/img/nav-icon.svg" alt="icono de navegación" class="movil-menu-icon">
+            <ul class="head__navigation_ul">{% block nav_list %} {% endblock %}</ul>
         </nav>
     </header>
-    {%block body_content%}{%endblock%}
+    <main>
+        {%block body_content%}{%endblock%}
+
+        <footer class="footer container">
+            {%block footer_content%}{%endblock%}
+        </footer>
+    </main>
+    
 </body>
 </html>

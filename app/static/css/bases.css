@@ -11,10 +11,14 @@
     --background-tarjetas-temas-user: #015895;
 
     --boton-rojo: #B72E2E;
+    --boton-azul: #2A6F97;
 
     /*Fuente*/
     --fuente-ceniza-claro: #666666;
     --fuente-ceniza-oscuro: #4F4C4C;
+    --fuente-azul-oscuro: #2C7DA0;
+    --fuente-azul-medio: #468FAF;
+    --fuente-azul-claro: #89C2D9;
 
     /*Fuentes de Texto*/
     --montserrat: 'Montserrat', sans-serif;
@@ -42,10 +46,13 @@ body {
     max-width: 530px;
     box-sizing: border-box;
     padding: 1rem 2rem;
-    border: 1px solid var(--boton-rojo);
+    border: 1px solid var(--boton-azul);
+    background-color: var(--boton-azul);
+    color: var(--background-blanco);
     border-radius: 5px;
     
 }
+
 /*Pantallas min 1024px w*/
 @media screen and (min-width: 1024px) {
     .container {
