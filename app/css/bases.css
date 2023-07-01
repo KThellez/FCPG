@@ -1,0 +1,55 @@
+:root{
+    /*Variables!!*/
+    /*Colores de fondo*/
+    --background-negro: #000000;
+    --background-blanco: #ffffff;
+    --background-home-nav-footer: #121212;
+    --background-user-nav: #245375;
+
+    /*Tarjetas*/
+    --background-tarjetas-home: #0D0D0D;
+    --background-tarjetas-temas-user: #015895;
+
+    --boton-rojo: #B72E2E;
+
+    /*Fuente*/
+    --fuente-ceniza-claro: #666666;
+    --fuente-ceniza-oscuro: #4F4C4C;
+
+    /*Fuentes de Texto*/
+    --montserrat: 'Montserrat', sans-serif;
+    --open-sans: 'Open Sans', sans-serif;
+    --spline-mono-sans: 'Spline Sans Mono', sans-serif;
+    --league-gothic: 'League Gothic', sans-serif;
+    --sirin-stencil: 'Sirin Stencil', sans-serif;
+    --old-tt: 'Old Standard TT', sans-serif;
+    --spline-sans: 'Spline Sans', sans-serif;
+
+}
+
+body {
+    font-family: var(--open-sans);
+}
+
+.container{
+    padding-right: 6%;
+    padding-left: 6%;
+}
+.boton{
+    text-align: center;
+    display: block;
+    width: 100%;
+    max-width: 530px;
+    box-sizing: border-box;
+    padding: 1rem 2rem;
+    border: 1px solid var(--boton-rojo);
+    border-radius: 5px;
+    
+}
+/*Pantallas min 1024px w*/
+@media screen and (min-width: 1024px) {
+    .container {
+        padding-left: calc((100% - 940px)/2);
+        padding-right: calc((100% - 940px)/2);
+    }
+}
