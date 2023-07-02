@@ -18,22 +18,27 @@
 
 {% block body_content %}
 <form class="formulario__login" action="/login" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="formulario__login__contenido">
         <img class="imagen__login" src="../../static/img/logoBw.svg" alt="Logo" width="72">
         <h1 class="formulario__login__titulo">Iniciar sesión</h1>
         <label for="user" class="formulario__login__emailaddress">Usuario</label>
-        <input type="text" id="user" name="user" class="formulario__login__texto__emailaddress" placeholder="Usuario" required autofocus>
+        <input type="text" id="user" name="user" class="formulario__login__texto__emailaddress" placeholder="Usuario" minlength="4" maxlength="20" autofocus>
         <label for="password" class="formulario__login__password">Contraseña</label>
-        <input type="password" id="password" name="password" class="formulario__login__texto__password" placeholder="Contraseña" required>
+        <input type="password" id="password" name="password" class="formulario__login__texto__password" placeholder="Contraseña" minlength="8" required>
         <div class="formulario__login__div">
             <label class="formulario__login__div__rememberme">
                 <input type="checkbox" value="remember-me"> Recuérdame
             </label>
         </div>
+        {{ form.csrf_token }}
         <button class="formulario__login__boton boton" type="submit">Iniciar Sesión</button>
         <p class="formulario__login__div__copy">&#169; 2023 SkyCast. Todos los derechos Reservados.</p>
     </div>
 </form>
+
+
+
 
 {%endblock%}
 {%block footer_content%}

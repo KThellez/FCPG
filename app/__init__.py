@@ -1,7 +1,17 @@
 from flask import Flask, render_template, request, url_for, redirect
+from flask_wtf.csrf import CSRFProtect
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField
+from wtforms.validators import InputRequired
+from config import config
+
 
 
 app = Flask(__name__)
+
+class LoginForm(FlaskForm):
+    user = StringField('Usuario', validators=[InputRequired()])
+    password = PasswordField('Contraseña', validators=[InputRequired()])
 
 
 @app.route('/')
@@ -49,13 +59,16 @@ def temas():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    form = LoginForm()
     print(request.method)
+    
     if request.method == 'POST':
         print(request.form['user'])
         print(request.form['password'])
-        return 'OK'
+        return redirect(url_for('index'))
     else:
-        return render_template('auth/login.html')
+        return render_template('auth/login.html', form=form)
+
 
 @app.route('/register')
 def register():
@@ -78,9 +91,13 @@ def modelo_tres():
 def pagina_no_encontrada(error):
     return render_template('errores/404.html'), 404
 
+
+csrf = CSRFProtect(app)
+
 def inicializar_app(config):
     app.config.from_object(config)
+    csrf.init_app(app)
     app.register_error_handler(404, pagina_no_encontrada)
     app.add_url_rule('/', view_func=index)
-    app.run( port=7777)
+    app.run(port=7777)
     return app
