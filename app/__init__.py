@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
+
 
 app = Flask(__name__)
-
 
 
 @app.route('/')
@@ -47,9 +47,15 @@ def temas():
     return render_template('temas.html', temas = data , pronosticos = pronosticos, valor = valor1)
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    pass
+    print(request.method)
+    if request.method == 'POST':
+        print(request.form['user'])
+        print(request.form['password'])
+        return 'OK'
+    else:
+        return render_template('auth/login.html')
 
 @app.route('/register')
 def register():
@@ -67,6 +73,14 @@ def modelo_dos():
 def modelo_tres():
     pass
 
-if __name__ == '__main__':
+
+#Errores!
+def pagina_no_encontrada(error):
+    return render_template('errores/404.html'), 404
+
+def inicializar_app(config):
+    app.config.from_object(config)
+    app.register_error_handler(404, pagina_no_encontrada)
     app.add_url_rule('/', view_func=index)
-    app.run(debug=True, port=7777)
+    app.run( port=7777)
+    return app

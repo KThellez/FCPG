@@ -33,6 +33,8 @@
 
 }
 
+/*TODO: RECUERDA UTILIZAR EL &ocute para las o y asi con tas las tildes. Cracteres especiales para codificaion*/
+
 body {
     font-family: var(--open-sans);
 }

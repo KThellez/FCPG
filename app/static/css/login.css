@@ -1,0 +1,84 @@
+.formulario__login{
+    background-color: var(--background-negro);
+    display: flex;
+    padding: 9.25rem 3rem 5.25rem 3rem;
+    flex-direction: column;
+    color: var(--background-blanco);
+    align-items: center;
+    justify-content: center;
+}
+.formulario__login__contenido{
+    background-color: var(--background-home-nav-footer);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 0 15px var(--fuente-azul-oscuro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagen__login{
+    width: 50vw;
+}
+.formulario__login__titulo{
+    display: none;
+}
+.formulario__login__emailaddress, .formulario__login__password{
+    color: var(--fuente-azul-oscuro);
+    font-family: var(--sirin-stencil);
+    font-weight: 400;
+    font-size: 1.25rem;
+    padding-bottom: 0.5rem;
+}
+
+.formulario__login__texto__emailaddress, .formulario__login__texto__password{text-align: center;
+    display: block;
+    width: 90%;
+    max-width: 530px;
+    box-sizing: border-box;
+    padding: 1rem 2rem;
+    border: 2.5px solid var(--fuente-azul-oscuro);
+    background-color: var(--background-blanco);
+    color: var(--background-negro);
+    border-radius: 5px;
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+}
+
+.formulario__login__div__rememberme input{
+    margin-bottom: 1rem;
+    font-family: var(--spline-mono-sans);
+    font-weight: 300;
+    font-size: 0.75rem;
+}
+.formulario__login__div__copy{
+    font-size: 0.6rem;
+    font-family: var(--spline-sans);
+    font-weight: 300;
+    padding-top: 1rem;
+}
+.formulario__login__boton{
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .formulario__login__contenido {
+        width: 80vw; 
+    }
+}
+@media screen and (max-width: 1024px) {
+    .formulario__login__contenido {
+        width: 50vw; 
+    }
+}
+
+/*
+.formulario__login{
+    background-color: var(--background-negro);
+    display: flex;
+    padding: 18.25rem 20rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}*/

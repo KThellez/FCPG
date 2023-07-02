@@ -1,0 +1,10 @@
+.titulo_principal{
+    padding: 1% 1rem;
+    background-color: var(--background-negro);
+}
+.texto_error_principal{
+    color: var(--fuente-azul-claro);
+    padding: 20% 20%;
+    font-family: var(--league-gothic);
+    font-size: 5rem;
+}
