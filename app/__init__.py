@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, url_for, redirect
+from flask_mysqldb import MySQL
 from flask_wtf.csrf import CSRFProtect
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
@@ -12,6 +13,9 @@ app = Flask(__name__)
 class LoginForm(FlaskForm):
     user = StringField('Usuario', validators=[InputRequired()])
     password = PasswordField('Contraseña', validators=[InputRequired()])
+
+csrf = CSRFProtect(app)
+db = MySQL(app)
 
 
 @app.route('/')
@@ -92,7 +96,23 @@ def pagina_no_encontrada(error):
     return render_template('errores/404.html'), 404
 
 
-csrf = CSRFProtect(app)
+
+#RUTA DE PRUEBA
+@app.route('/estudiantes')
+def listar_estudiantes():
+    try:
+        cursor=db.connection.cursor()
+        sql="SELECT u.Nombre_Usuario, p.Primer_Nombre, p.Primer_Apellido FROM usuario u JOIN estudiante e ON u.ID_Usuario = e.ID_Usuario JOIN persona p ON e.ID_Persona = p.ID_Persona;"
+        cursor.execute(sql)
+        data = cursor.fetchall()
+        print(data)
+        data = {
+            "estudiante": data
+        }
+        #return 'ok Número de estudiantes {0}'.format(len(data))
+        return render_template('listar_estudiantes.html', data = data)
+    except Exception as ex:
+        raise Exception(ex)
 
 def inicializar_app(config):
     app.config.from_object(config)
