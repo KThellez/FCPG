@@ -1,0 +1,79 @@
+{% extends './layout.html' %}
+
+{% block tittle %} Plataforma {% endblock %}
+{%block links_head%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+{%endblock%}
+
+{% block nav_list %} 
+<li class="head__enlace"><a href="{{url_for('temas')}}">Temas</a></li>
+<li class="head__enlace"><a href="#">Sobre</a></li>
+<li class="head__enlace"><a href="#">Contacto</a></li>
+<li class="head__enlace boton__header"><a href="{{url_for('login')}}">{{usuario_nombre}}</a></li>
+<li class="head__enlace"><a href="{{url_for('logout')}}">Logout</a></li>
+
+{% endblock %}
+
+{% block body_content %}
+    <section class="llamada container">
+        <h6 class="llamada__slogan">P R A C T I C A,  A P R E N D E  Y   D I V I E R T E T E</h6>
+        <h1 class="llamada__titulo">SKYCAST</h1>
+        <p class="llamada__texto">Sumérgete en el emocionante mundo de la previsión y descubre el poder de SES, Winters y ARMA. Despierta tu lado analítico y conquista los enigmas de las series temporales con ForecastMaster. Te invitamos a explorar más y desatar tu potencial en nuestra página principal.</p>
+        <a href="#" class="llamada__boton boton">Ingresa ahora</a>
+    </section>
+    <section class="destacados container">
+        <img src="../static/img/logo.svg" alt="Imagen destacado" class="destacado__imagen">
+        <div class="destacado__mensaje">
+            <h2 class="destacado__mensaje__titulo">Explore nuestros temas</h2>
+            <p class="destacado__mensaje__texto">Fortalezca sus habilidades en Suavizado Exponencial Simple (SES), domine la complejidad de los Inviernos Cíclicos (Winters) y descifre el enigma de las Medias Móviles Autorregresivas (ARMA). Mejore sus previsiones y conviértase en un analista excepcional</p>
+        </div>
+        <div class="destacado__invitacion">
+            <h3 class="destacado__invitacion__pregunta">¿Listo para comenzar su aventura de previsión? Está a sólo unos clics de distancia.</h3>
+            <a href="#" class="destacado__boton boton">Regístrate Ahora</a>
+        </div>
+    </section>
+    <section class="curiosidades container">
+        <div class="leyenda">
+            <h3 class="leyenda__texto">"Predecir puede parecer un arte oscuro,<br>pero con las herramientas adecuadas,<br>¡es pan comido! - Magic Mike,<br>pronosticador de futuro".</h3>
+            <div class="curiosidades__div__tarjetas">
+                <h2 class="curiosidades__titulo">Curiosidades</h2>
+                <ul class="curiosidades__tarjetas">
+                    <li class="tarjetas tarjeta__ses">
+                        <h3 class="tarjetas__titulo">¿Qué es el suavizacion exponencial simple?</h3>
+                        <article class="tarjetas__contenido">
+                            <p class="tarjeta__texto">El Suavizado Exponencial Simple (SES) es un método de previsión de series temporales que utiliza una media ponderada de observaciones pasadas para predecir valores futuros. Es el más adecuado para datos sin tendencia clara ni patrones estacionales.</p>
+                            <a href="#" class="tarjetas__boton tarjetas__boton__ses boton">SES</a>
+                        </article>
+                    </li>
+                    <li class="tarjetas tarjeta__winters">
+                        <h3 class="tarjetas__titulo">¿Qué es el cíclico winters?</h3>
+                        <article class="tarjetas__contenido">
+                            <p class="tarjeta__texto">El método Winters cíclico, también conocido como método Winters, es una técnica de previsión muy adecuada para analizar datos con componentes tanto tendenciales como estacionales. Mejora la precisión de las previsiones al tener en cuenta los cambios estacionales.</p>
+                            <a href="#" class="tarjetas__boton tarjetas__boton__winters boton">Winters</a>
+                        </article>
+                    </li>
+                    <li class="tarjetas tarjeta__arma">
+                        <h3 class="tarjetas__titulo">¿Qué significa ARMA?</h3>
+                        <article class="tarjetas__contenido">
+                            <p class="tarjeta__texto">ARMA significa Media Móvil Autorregresiva. Es una combinación de dos modelos: un modelo autorregresivo (AR) y un modelo de media móvil (MA). Se suele utilizar para analizar y predecir datos de series temporales univariantes.</p>
+                            <a href="#" class="tarjetas__boton tarjetas__boton__arma boton">ARMA</a>
+                        </article>
+                    </li>
+                    <li class="tarjetas tarjeta__beneficios">
+                        <h3 class="tarjetas__titulo">¿A quién beneficia el aprendizaje de estas técnicas?</h3>
+                        <article class="tarjetas__contenido">
+                            <p class="tarjeta__texto">Cualquier persona interesada en el análisis de datos, la estadística, las finanzas o la econometría puede beneficiarse del aprendizaje de estas técnicas de previsión. Se utilizan ampliamente en diversos sectores, como las finanzas, el comercio minorista, la industria manufacturera y la toma de decisiones basada en datos.</p>
+                            <a href="#" class="tarjetas__boton tarjetas__boton__beneficios boton">Métodos</a>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+{%endblock%}
+{%block footer_content%}
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/linkedin-icon.png" alt="Icono LinkedIn" class="footer__media__img"></a></li>
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/university-icon.png" alt="Icono Universidad" class="footer__media__img"></a></li>
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/github-Icon.png" alt="Icono Github" class="footer__media__img"></a></li>
+{%endblock%}
+{% block customJS %}{%endblock%}

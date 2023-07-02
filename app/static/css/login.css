@@ -62,11 +62,54 @@
     font-size: 1rem;
 }
 
+.alerta {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 225px;
+    background-color: var(--fuente-azul-oscuro);
+    border: 1px solid var(--boton-azul-oscuro);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.alerta.cerrada {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.alerta:hover {
+    opacity: 1;
+}
+
+.cerrar_alerta {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: var(--background-blanco);
+    border: none;
+    background-color: transparent;
+    font-size: 1.2em;
+}
+
+
 @media screen and (max-width: 768px) {
     .formulario__login__contenido {
         width: 80vw; 
     }
 }
+@media screen and (min-width: 768px) {
+    .alerta {
+        width: 325px;
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .formulario__login__contenido {
         width: 50vw; 

@@ -1,11 +1,12 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect , flash
 from flask_mysqldb import MySQL
 from flask_wtf.csrf import CSRFProtect
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import InputRequired
 from config import config
-
+from flask_login import LoginManager, login_user, logout_user
+from .consts import *
 
 from .models.ModeloNotasGrupo import ModeloNotasGrupo
 from .models.ModeloUsuario import ModeloUsuario
@@ -20,6 +21,12 @@ class LoginForm(FlaskForm):
 
 csrf = CSRFProtect(app)
 db = MySQL(app)
+login_manager_app=LoginManager(app)
+
+@login_manager_app.user_loader
+def load_user(id):
+    return ModeloUsuario.obtener_por_id(db,id)
+
 
 
 @app.route('/')
@@ -31,6 +38,14 @@ def index():
     }
     return render_template('index.html', home = data)
 
+usuario_sign_in = None
+
+@app.route('/plataforma')
+def plataforma():
+    global usuario_sign_in
+    print('El valor es')
+    print(usuario_sign_in)
+    return render_template('plataforma.html', usuario_nombre = usuario_sign_in)
 
 @app.before_request
 def before_request():
@@ -68,16 +83,30 @@ def temas():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    global usuario_sign_in
     if request.method == "POST":
         usuario = Usuario(None, request.form['user'], request.form['password'], None)
         usuario_logeado = ModeloUsuario.login(db, usuario)
         if usuario_logeado != None:
-            return redirect(url_for('index'))
+            usuario_sign_in= usuario.nombre_usuario
+            login_user(usuario_logeado)
+            return redirect(url_for('plataforma'))
         else:
+            usuario_sign_in = None
+            flash(LOGIN_CREDENCIALES_INVALIDAS)
             return render_template('auth/login.html', form=form)
     else:
         return render_template('auth/login.html', form=form)
     
+
+@app.route('/logout')
+def logout():
+    global usuario_sign_in
+    usuario_sign_in = None
+    logout_user()
+    flash(LOGOUT_EXITOSO)
+    return redirect(url_for('login'))
+
 
 @app.route('/register')
 def register():

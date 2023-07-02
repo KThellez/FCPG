@@ -64,3 +64,33 @@ body {
         padding-right: calc((100% - 940px)/2);
     }
 }
+
+
+@media screen and (min-width: 1440px) {
+    .container {
+        padding-left: calc((90% - 940px)/2);
+        padding-right: calc((90% - 940px)/2);
+    }
+    
+}
+@media screen and (min-width:  2.048px) {
+    .container {
+        padding-left: calc((80% - 940px)/2);
+        padding-right: calc((80% - 940px)/2);
+    }
+    
+}
+@media screen and (min-width:  3840px) {
+    .container {
+        padding-left: calc((70% - 940px)/2);
+        padding-right: calc((70% - 940px)/2);
+    }
+    
+}
+@media screen and (min-width:  7680px) {
+    .container {
+        padding-left: calc((60% - 940px)/2);
+        padding-right: calc((60% - 940px)/2);
+    }
+
+}

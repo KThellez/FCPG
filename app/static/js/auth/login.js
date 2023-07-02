@@ -20,3 +20,44 @@
         loadingMessage.style.display = 'none';
     });
 })();
+
+
+var botonesCerrar = document.querySelectorAll('.cerrar_alerta');
+botonesCerrar.forEach(function(boton) {
+    boton.addEventListener('click', function() {
+        this.parentNode.style.display = 'none';
+    });
+});
+
+
+var alerta = document.querySelector('.alerta');
+var botonCerrar = document.querySelector('.cerrar_alerta');
+var tiempoCierre = 3000; // 3 segundos
+var tiempoID;
+
+botonCerrar.addEventListener('click', function() {
+    cerrarAlerta();
+});
+
+alerta.addEventListener('mouseenter', reiniciarContador);
+alerta.addEventListener('mouseleave', iniciarContador);
+
+iniciarContador();
+
+function iniciarContador() {
+    tiempoID = setTimeout(function() {
+        cerrarAlerta();
+    }, tiempoCierre);
+}
+
+function reiniciarContador() {
+    clearTimeout(tiempoID);
+}
+
+function cerrarAlerta() {
+    alerta.style.opacity = '0';
+    setTimeout(function() {
+        alerta.style.display = 'none';
+    }, 300); // 0.3 segundos (tiempo de transición en CSS)
+}
+

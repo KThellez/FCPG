@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-
-class Usuario:
+class Usuario(UserMixin):
     def __init__(self,id_usuario, nombre_usuario, contrasena, tipo_usuario_id):
         self.id_usuario = id_usuario
         self.nombre_usuario = nombre_usuario
@@ -12,3 +12,6 @@ class Usuario:
         encriptado = generate_password_hash(passw)
         coincidencia = check_password_hash(encriptado, passw)
         return coincidencia
+    
+    def get_id(self):
+        return str(self.id_usuario)

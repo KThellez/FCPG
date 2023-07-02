@@ -35,6 +35,19 @@
         <button class="formulario__login__boton boton" type="submit">Iniciar Sesión</button>
         <p class="formulario__login__div__copy">&#169; 2023 SkyCast. Todos los derechos Reservados.</p>
     </div>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div id="alerta" class="alerta alerta__login" role="alert">
+        <strong>{{message}}</strong>
+        <button class="cerrar_alerta" type="button" data-dismiss="alert" aria-label="cerrar_alerta">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} 
+    {% endif %}
+    {% endwith %}
 </form>
 
 
@@ -49,4 +62,5 @@
 
 {% block customJS %}
 <script src="{{url_for('static', filename='../../../../static/js/auth/login.js')}}"></script>
+
 {%endblock%}
