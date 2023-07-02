@@ -93,7 +93,7 @@ def login():
             return redirect(url_for('plataforma'))
         else:
             usuario_sign_in = None
-            flash(LOGIN_CREDENCIALES_INVALIDAS)
+            flash(LOGIN_CREDENCIALES_INVALIDAS, WARNING)
             return render_template('auth/login.html', form=form)
     else:
         return render_template('auth/login.html', form=form)
@@ -104,7 +104,7 @@ def logout():
     global usuario_sign_in
     usuario_sign_in = None
     logout_user()
-    flash(LOGOUT_EXITOSO)
+    flash(LOGOUT_EXITOSO, SUCCESS)
     return redirect(url_for('login'))
 
 
