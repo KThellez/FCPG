@@ -8,12 +8,21 @@
     </title>
 </head>
 <body>
+
     <table>
         {% for l in data.estudiante %}
         <tr>
-            <td>{{l[0]}}</td>
-            <td>{{l[1]}}</td>
-            <td>{{l[2]}}</td>
+            <td>{{ l[0].codigo }}</td>
+            <td>{{ l[1].primer_apellido }}</td>
+            <td>{{ l[1].segundo_apellido }}</td>
+            <td>{{ l[1].primer_nombre }}</td>
+            <td>{{ l[1].segundo_nombre }}</td>
+            <td>{{ l[1].telefono }}</td>
+            <td>{{ l[1].correo }}</td>
+            <td>{{ l[2][0].puntaje }}</td>
+            <td>{{ l[2][1].puntaje }}</td>
+            <td>{{ l[2][2].puntaje }}</td>
+            <td>{{ l[3] }}</td>
         </tr>
         {% endfor %}
     </table>

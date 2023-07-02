@@ -7,6 +7,10 @@ from wtforms.validators import InputRequired
 from config import config
 
 
+from .models.ModeloNotasGrupo import ModeloNotasGrupo
+from .models.ModeloUsuario import ModeloUsuario
+
+from .models.entities.Usuario import Usuario
 
 app = Flask(__name__)
 
@@ -64,15 +68,16 @@ def temas():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    print(request.method)
-    
-    if request.method == 'POST':
-        print(request.form['user'])
-        print(request.form['password'])
-        return redirect(url_for('index'))
+    if request.method == "POST":
+        usuario = Usuario(None, request.form['user'], request.form['password'], None)
+        usuario_logeado = ModeloUsuario.login(db, usuario)
+        if usuario_logeado != None:
+            return redirect(url_for('index'))
+        else:
+            return render_template('auth/login.html', form=form)
     else:
         return render_template('auth/login.html', form=form)
-
+    
 
 @app.route('/register')
 def register():
@@ -100,19 +105,22 @@ def pagina_no_encontrada(error):
 #RUTA DE PRUEBA
 @app.route('/estudiantes')
 def listar_estudiantes():
+    estudiantes = {}
     try:
-        cursor=db.connection.cursor()
-        sql="SELECT u.Nombre_Usuario, p.Primer_Nombre, p.Primer_Apellido FROM usuario u JOIN estudiante e ON u.ID_Usuario = e.ID_Usuario JOIN persona p ON e.ID_Persona = p.ID_Persona;"
-        cursor.execute(sql)
-        data = cursor.fetchall()
-        print(data)
-        data = {
-            "estudiante": data
+        estudiantes_lista = ModeloNotasGrupo.listar_estudiantes(db, '1', 'Grupo 2 - Docente Uno')
+        print("ABAJO LA LISTA QUE LLEGA DE ESTUDIANTE")
+        print(estudiantes_lista)
+        data={
+            'estudiante':estudiantes_lista
         }
-        #return 'ok Número de estudiantes {0}'.format(len(data))
-        return render_template('listar_estudiantes.html', data = data)
+        print('ESTO ESTA EN DATA')
+        print(data)
+        return render_template('listar_estudiantes.html', data=data)
     except Exception as ex:
-        raise Exception(ex)
+        print(ex)
+    return []
+
+
 
 def inicializar_app(config):
     app.config.from_object(config)
