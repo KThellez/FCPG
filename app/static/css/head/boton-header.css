@@ -1,0 +1,14 @@
+@media screen and (min-width: 768px){
+    .boton__header{
+        text-align: center;
+        display: block;
+        width: 100%;
+        max-width: 530px;
+        box-sizing: border-box;
+        padding: 1rem 1rem;
+        border: 1px solid var(--boton-border-azul-claro);
+        background-color: var(--boton-azul-oscuro);
+        color: var(--background-blanco);
+        border-radius: 15px;
+    }
+}

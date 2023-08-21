@@ -1,0 +1,81 @@
+{% extends './layout.html' %}
+
+{% block tittle %} Login {% endblock %}
+
+{%block links_head%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/error.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/registro.css')}}">
+{%endblock%}
+
+{% block nav_list %} 
+<li class="head__enlace"><a href="{{url_for('temas')}}">Temas</a></li>
+<li class="head__enlace"><a href="#">Sobre</a></li>
+<li class="head__enlace"><a href="#">Contacto</a></li>
+<li class="head__enlace boton__header"><a href="#">Iniciar Sesión</a></li>
+
+{% endblock %}
+
+{% block body_content %}
+<form class="formulario__registro" action="/register" method="post">
+
+    
+    <div class="formulario__registro__contenido">
+        <img class="imagen__registro" src="../../static/img/logoBw.svg" alt="Logo" width="72">
+        <h1 class="formulario__registro__titulo">Registro</h1>
+        <label for="nombre" class="formulario__registro__lbtexto">Primer Nombre</label>
+        <input type="text" id="prmer_nombre" name="nombre" class="formulario__registro__texto__caja" placeholder="Primer nombre"  autofocus required>
+        
+        <label for="nombre" class="formulario__registro__lbtexto">Segundo Nombre</label>
+        <input type="text" id="segundo_nombre" name="nombre" class="formulario__registro__texto__caja" placeholder="Segundo nombre"  >
+
+        <label for="apellido" class="formulario__registro__lbtexto">Primer Apellido</label>
+        <input type="text" id="primer_apellido" name="apellido" class="formulario__registro__texto__caja" placeholder="Primer apellido"  required>
+        
+        <label for="apellido" class="formulario__registro__lbtexto">Segundo Apellido</label>
+        <input type="text" id="segundo_apellido" name="apellido" class="formulario__registro__texto__caja" placeholder="Segundo apellido" >
+
+        <label for="telefono" class="formulario__registro__lbtexto">Telefono</label>
+        <input type="text" id="telefono" name="telefono" class="formulario__registro__texto__caja" placeholder="Teléfono" required>
+
+        <label for="correo" class="formulario__registro__lbtexto">Correo</label>
+        <input type="text" id="correo" name="correo" class="formulario__registro__texto__caja" placeholder="Correo" required> 
+
+        <label for="fechaN" class="formulario__registro__lbtexto">Fecha de Nacimiento</label>
+        <input type="date" id="fecha_nacimiento" name="fechaN" class="formulario__registro__texto__caja" placeholder="fecha" required>
+
+
+
+        <button class="formulario__registro__boton boton" type="submit">Registrarse</button>
+        <p class="formulario__registro__div__copy">&#169; 2023 SkyCast. Todos los derechos Reservados.</p>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div id="alerta" class="alerta alerta__login {{category}}"  role="alert">
+        <strong>{{message}}</strong>
+        <button class="cerrar_alerta" type="button" data-dismiss="alert" aria-label="cerrar_alerta">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %} 
+    {% endif %}
+    {% endwith %}
+</form>
+
+
+
+
+{%endblock%}
+{%block footer_content%}
+    <li class="footer__enlace"><a href="#">Registro</a></li>
+    <li class="footer__enlace"><a href="{{url_for('login')}}">Iniciar Sesión</a></li>
+    <li class="footer__enlace"><a href="#">Contacto</a></li>
+{%endblock%}
+
+{% block customJS %}
+<script src="{{url_for('static', filename='../../../../static/js/alertas.js')}}"></script>
+
+
+{%endblock%}

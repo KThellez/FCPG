@@ -1,3 +1,4 @@
+/*
 (function (){
     // Crear elemento de mensaje de carga
     var loadingMessage = document.createElement('div');
@@ -32,7 +33,7 @@ botonesCerrar.forEach(function(boton) {
 
 var alerta = document.querySelector('.alerta');
 var botonCerrar = document.querySelector('.cerrar_alerta');
-var tiempoCierre = 3000; // 3 segundos
+var tiempoCierre = 3000; // 3 seg
 var tiempoID;
 
 botonCerrar.addEventListener('click', function() {
@@ -58,6 +59,8 @@ function cerrarAlerta() {
     alerta.style.opacity = '0';
     setTimeout(function() {
         alerta.style.display = 'none';
-    }, 300); // 0.3 segundos (tiempo de transición en CSS)
+    }, 300); // 0.3 segundos
 }
+*/
+
 

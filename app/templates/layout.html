@@ -6,13 +6,38 @@
     <title>{% block tittle %} {% endblock %}</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/reset.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/bases.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/head/head.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/head/head-logo.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/head/head-navigation-ul.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/head/head-navigation.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/head/head-enlace.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/head/header.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/head/boton-header.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/head/movil-menu-icon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer-copy.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer-div-social.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer-div.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer-enlace.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer-media-img.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer-media-li.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer-media.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer-nav.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer-navigation-lista.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/footer-social-ul.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/div-navigation-titulo.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/div-social-copy')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/footer/navigation_div.css')}}">
+
+
     <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Montserrat:wght@300;400;700&family=Old+Standard+TT:wght@400;700&family=Open+Sans:wght@300;400;700&family=Sirin+Stencil&family=Spline+Sans+Mono:wght@300;400;700&family=Spline+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="../static/img/logoIcon.png" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='img/logoIcon.png') }}" type="image/x-icon">
+
     {%block links_head%}{%endblock%}
 </head>
 <body>
     <header class="head container">
-        <a href="{{url_for('index')}}"><img src="../static/img/logoBw.svg" alt="Logo de SkyCast" class="head__logo"></a>
+        <a href="{{url_for('index')}}"><img src="{{ url_for('static', filename='img/logoBw.svg') }}" alt="Logo de SkyCast" class="head__logo"></a>
         <nav class="head__navigation">
             <img src="../static/img/nav-icon.svg" alt="icono de navegación" class="movil-menu-icon">
             <ul class="head__navigation_ul">{% block nav_list %} {% endblock %}</ul>
@@ -34,9 +59,8 @@
                 <div class="navigation_div">
                     <h3 class="div__navigation__titulo">Links Rapidos</h3>
                     <ul class="footer_navigation_lista">
-                        <li class="footer__enlace"><a href="#">Registro</a></li>
-                        <li class="footer__enlace"><a href="#">Iniciar Sesión</a></li>
-                        <li class="footer__enlace"><a href="#">Contacto</a></li>
+                        
+                        {%block footer_content%}{%endblock%}
                     </ul>
                 </div>
                 <div class="navigation_div">
@@ -50,8 +74,11 @@
             </nav>
             <div class="div__social__copy">
                 <div class="footer__div__social">
-                    <ul class="footer__social">
-                        {%block footer_content%}{%endblock%}
+                    <ul class="footer__social_ul">
+                        <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/linkedin-icon.png" alt="Icono LinkedIn" class="footer__media__img"></a></li>
+                        <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/university-icon.png" alt="Icono Universidad" class="footer__media__img"></a></li>
+                        <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/github-Icon.png" alt="Icono Github" class="footer__media__img"></a></li>
+                        
                     </ul>
                 </div>
                 <div class="footer__copy">

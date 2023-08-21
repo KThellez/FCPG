@@ -1,0 +1,42 @@
+.titulo_tabla{
+    padding-top: 7.5rem;
+    background-color: var(--background-negro);
+    color:  var(--background-blanco);
+    text-align: center;
+}
+h2,h3{
+    font-family: var(--spline-mono-sans);
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.tabla_listado_estudiantes{
+    width: 99.2vw;
+    height: 100vw;
+    background-color: var(--background-negro);
+    color: var(--background-blanco);
+
+    
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+th {
+    justify-content: left;
+    background-color: var(--background-tarjetas-temas-user);
+}
+.texto_plano {
+    border-radius: 5px;
+}
+.correo {
+    cursor: pointer;
+    user-select: all;
+}
+

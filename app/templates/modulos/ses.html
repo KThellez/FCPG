@@ -1,0 +1,45 @@
+{% extends './layout.html' %}
+
+{% block tittle %} Login {% endblock %}
+
+{%block links_head%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/error.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/metodos/progressBar.css')}}">
+{%endblock%}
+
+{% block nav_list %} 
+<li class="head__enlace"><a href="{{url_for('temas')}}">Temas</a></li>
+<li class="head__enlace"><a href="{{url_for('sobre_nosotros')}}">Sobre</a></li>
+<li class="head__enlace"><a href="{{url_for('contacto')}}">Contacto</a></li>
+<li class="head__enlace boton__header"><a href="{{url_for('login')}}">Iniciar Sesión</a></li>
+
+{% endblock %}
+
+{% block body_content %}
+<section class="bar">
+    <div class="progress-bar">
+        <div class="progress-text">Work in Progress</div>
+        <div class="lines-container">
+            <div class="line yellow"></div>
+            <div class="line black"></div>
+            <div class="line yellow"></div>
+            <div class="line black"></div>
+            <div class="line yellow"></div>
+        </div>
+    </div>
+</section>
+
+
+{%endblock%}
+{%block footer_content%}
+    <li class="footer__enlace"><a href="{{url_for('register')}}">Registro</a></li>
+    <li class="footer__enlace"><a href="{{url_for('login')}}">Iniciar Sesión</a></li>
+    <li class="footer__enlace"><a href="{{url_for('contacto')}}">Contacto</a></li>
+{%endblock%}
+
+{% block customJS %}
+<script src="{{url_for('static', filename='../../../../static/js/alertas.js')}}"></script>
+
+
+{%endblock%}

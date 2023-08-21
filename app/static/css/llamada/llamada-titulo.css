@@ -1,0 +1,16 @@
+.llamada__titulo {
+    font-family: var(--spline-mono-sans);
+    font-size: 5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--fuente-azul-oscuro);
+    margin-bottom: 1.5rem;
+}
+
+@media screen and (min-width: 1024px){
+    .llamada__titulo {
+        font-size: 3.25rem;
+        margin-bottom: 2rem;
+    }
+}

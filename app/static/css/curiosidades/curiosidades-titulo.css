@@ -1,0 +1,18 @@
+.curiosidades__titulo{
+    padding-left: 1.75rem;
+    text-align: left;
+    font-family: var(--league-gothic);
+    font-weight: 400;
+    font-size: 3rem;
+    color: var(--fuente-azul-claro);
+}
+@media screen and (min-width: 768px){
+    .curiosidades__titulo{
+        padding-left: 2.25rem;
+    }
+}
+@media screen and (min-width: 1024px){
+    .curiosidades__titulo{
+        padding-left: 2.75rem;
+    }
+}

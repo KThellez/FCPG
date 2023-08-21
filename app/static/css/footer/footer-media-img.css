@@ -1,0 +1,9 @@
+.footer__media__img {
+    max-width: 84px;
+    height: auto;
+}
+@media screen and (max-width: 767px){
+    .footer__media__img {
+        max-width: 54px;
+    }
+}

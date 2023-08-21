@@ -1,29 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Lista de Estudiantes
-    </title>
-</head>
-<body>
+{% extends './layout.html' %}
+
+{% block tittle %} Listado de Estudiantes {% endblock %}
+{%block links_head%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/listado_estudiantes.css')}}">
+{%endblock%}
+
+{% block nav_list %} 
+
+
+{% if current_user.tipo_usuario_id.id == 1 %}
+<li class="head__enlace"><a href="{{url_for('listar_docentes')}}">Docentes</a></li>
+<li class="head__enlace"><a href="{{url_for('listar_estudiantes')}}">Estudiantes</a></li>
+{% endif %}
+
+{% if current_user.tipo_usuario_id.id == 2 %}
+<li class="head__enlace"><a href="{{url_for('listar_grupos')}}">Grupos</a></li>
+<li class="head__enlace"><a href="{{url_for('listar_estudiantes')}}">Estudiantes</a></li>
+{% endif %}
+
+{% if current_user.tipo_usuario_id.id == 3 %}
+<li class="head__enlace"><a href="{{url_for('listar_notas')}}">Notas</a></li>
+<li class="head__enlace"><a href="{{url_for('modelo_uno')}}">Simple</a></li>
+<li class="head__enlace"><a href="{{url_for('modelo_dos')}}">Winters</a></li>
+<li class="head__enlace"><a href="{{url_for('modelo_tres')}}">Arma</a></li>
+{% endif %}
+<li class="head__enlace"><a href="{{url_for('temas')}}">Temas</a></li>
+<li class="head__enlace"><a href="{{url_for('contacto')}}">Contacto</a></li>
+<li class="head__enlace boton__header"><a href="{{url_for('login')}}">{{ current_user.nombre_usuario }}</a></li>
+<li class="head__enlace"><a href="{{url_for('logout')}}">Logout</a></li>
+
+{% endblock %}
+
+{% block body_content %}
+<section class="titulo_tabla">
+    <h2>{{ current_user.nombre_usuario }}</h2>
+    <h3>tabla listado estudiantes</h3>
+</section>
+<section class="tabla_listado_estudiantes">
+    {% if data.estudiante|length > 0 %}
     <table>
+        <tr>
+            <th>Código</th>
+            <th colspan="2">Nombre</th>
+            <th colspan="2">Apellido</th>
+            <th>Teléfono</th>
+            <th>Correo</th>
+            <th>Simple</th>
+            <th>Winters</th>
+            <th>ARMA</th>
+            <th>Promedio</th>
+        </tr>
         {% for l in data.estudiante %}
         <tr>
-            <td>{{ l[0].codigo }}</td>
-            <td>{{ l[1].primer_apellido }}</td>
-            <td>{{ l[1].segundo_apellido }}</td>
-            <td>{{ l[1].primer_nombre }}</td>
-            <td>{{ l[1].segundo_nombre }}</td>
-            <td>{{ l[1].telefono }}</td>
-            <td>{{ l[1].correo }}</td>
-            <td>{{ l[2][0].puntaje }}</td>
-            <td>{{ l[2][1].puntaje }}</td>
-            <td>{{ l[2][2].puntaje }}</td>
-            <td>{{ l[3] }}</td>
+            <td class="numero">{{ l[0].codigo }}/td>
+            <td class="texto_plano">{{ l[1].primer_apellido }}</td>
+            <td class="texto_plano">{{ l[1].segundo_apellido }}</td>
+            <td class="texto_plano">{{ l[1].primer_nombre }}</td>
+            <td class="texto_plano">{{ l[1].segundo_nombre }}</td>
+            <td class="telefono">{{ l[1].telefono }}</td>
+            <td class="correo">{{ l[1].correo }}</td>
+            <td class="nota" >{{ l[2][0].puntaje }}</td>
+            <td class="nota">{{ l[2][1].puntaje }}</td>
+            <td class="nota">{{ l[2][2].puntaje }}</td>
+            <td class="promedio">{{ l[3]|round(2) }}</td>
         </tr>
         {% endfor %}
     </table>
-</body>
-</html>
+    {% else %}
+    <br>
+    <h3 style="text-align: center; color:rgb(230, 216, 23);">No tenemos Estudiantes que mostrar</h3>
+    {% endif %}
+</section>
+
+
+{%endblock%}
+{%block footer_content%}
+    <li class="footer__enlace"><a href="#">Cuenta</a></li>
+    <li class="footer__enlace"><a href="{{url_for('logout')}}">Cerrar Sesión</a></li>
+    <li class="footer__enlace"><a href="#">Contacto</a></li>
+    
+{%endblock%}
+
+{% block customJS %}
+<script src="{{url_for('static', filename='../../../../static/js/alertas.js')}}"></script>
+{%endblock%}

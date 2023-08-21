@@ -1,0 +1,13 @@
+.llamada  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: #FFFFFF;
+    text-align: center;
+    
+    background-color: var(--background-negro);
+
+    padding-top: 7rem;
+    padding-bottom: 2.5rem;
+}

@@ -1,0 +1,5 @@
+@media screen and (min-width: 768px){
+    .navigation_div {
+        flex: 1;
+    }
+}

@@ -1,0 +1,7 @@
+section.curiosidades.container{
+    background-image: url('../../img/smoke-bg.png');
+    background-size: cover;
+    background-position: initial;
+    color: var(--background-blanco);
+    text-align: center;
+}

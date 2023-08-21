@@ -1,0 +1,9 @@
+.llamada__texto {
+    font-size: 1.25rem;
+    line-height: normal;
+    text-align: center;
+    width: 80%;
+    font-weight: 400;
+    color: var(--fuente-azul-medio);
+    margin: 0 auto 2.5rem;
+}

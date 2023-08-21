@@ -1,0 +1,6 @@
+.destacado__invitacion__pregunta{
+    color: var(--fuente-azul-oscuro);
+    font-family: var(--league-gothic);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}

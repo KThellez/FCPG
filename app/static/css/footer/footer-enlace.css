@@ -1,0 +1,6 @@
+.footer__enlace {
+    color: var(--fuente-azul-claro);
+    margin: 0 .5rem .7rem;
+    font-family: var(--spline-mono-sans);
+    font-weight: 300;
+}

@@ -55,12 +55,13 @@
 
 {%endblock%}
 {%block footer_content%}
-    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/linkedin-icon.png" alt="Icono LinkedIn" class="footer__media__img"></a></li>
-    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/university-icon.png" alt="Icono Universidad" class="footer__media__img"></a></li>
-    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/github-Icon.png" alt="Icono Github" class="footer__media__img"></a></li>
+    <li class="footer__enlace"><a href="#">Registro</a></li>
+    <li class="footer__enlace"><a href="{{url_for('login')}}">Iniciar Sesión</a></li>
+    <li class="footer__enlace"><a href="#">Contacto</a></li>
 {%endblock%}
 
 {% block customJS %}
-<script src="{{url_for('static', filename='../../../../static/js/auth/login.js')}}"></script>
+<script src="{{url_for('static', filename='../../../../static/js/alertas.js')}}"></script>
+
 
 {%endblock%}

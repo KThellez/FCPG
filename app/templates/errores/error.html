@@ -1,0 +1,44 @@
+{% extends './layout.html' %}
+
+{% block tittle %} 404 {% endblock %}
+{%block links_head%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/error.css')}}">
+{%endblock%}
+
+{% block nav_list %} 
+{% if current_user.tipo_usuario_id.id == 1 %}
+<li class="head__enlace"><a href="{{url_for('listar_docentes')}}">Docentes</a></li>
+<li class="head__enlace"><a href="{{url_for('listar_estudiantes')}}">Estudiantes</a></li>
+{% endif %}
+
+{% if current_user.tipo_usuario_id.id == 2 %}
+<li class="head__enlace"><a href="{{url_for('listar_grupos')}}">Grupos</a></li>
+<li class="head__enlace"><a href="{{url_for('listar_estudiantes')}}">Estudiantes</a></li>
+{% endif %}
+
+{% if current_user.tipo_usuario_id.id == 3 %}
+<li class="head__enlace"><a href="{{url_for('listar_notas')}}">Notas</a></li>
+<li class="head__enlace"><a href="{{url_for('modelo_uno')}}">Simple</a></li>
+<li class="head__enlace"><a href="{{url_for('modelo_dos')}}">Winters</a></li>
+<li class="head__enlace"><a href="{{url_for('modelo_tres')}}">Arma</a></li>
+{% endif %}
+<li class="head__enlace"><a href="{{url_for('temas')}}">Temas</a></li>
+<li class="head__enlace"><a href="{{url_for('contacto')}}">Contacto</a></li>
+<li class="head__enlace boton__header"><a href="{{url_for('login')}}">{{ current_user.nombre_usuario }}</a></li>
+<li class="head__enlace"><a href="{{url_for('logout')}}">Logout</a></li>
+
+{% endblock %}
+
+{% block body_content %}
+    <section class="titulo_principal">
+        <h1 class="texto_error_principal">Ocurrio un error... Lo sentimos</h1>
+    </section>
+{%endblock%}
+{%block footer_content%}
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/linkedin-icon.png" alt="Icono LinkedIn" class="footer__media__img"></a></li>
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/university-icon.png" alt="Icono Universidad" class="footer__media__img"></a></li>
+    <li class="footer__media_li"><a href="#" class="footer__media"><img src="../static/img/github-Icon.png" alt="Icono Github" class="footer__media__img"></a></li>
+{%endblock%}
+
+{% block customJS %}{%endblock%}

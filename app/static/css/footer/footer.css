@@ -1,0 +1,17 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-home-nav-footer);
+    color: var(--background-blanco);
+    padding-top: 1.5rem;
+    padding-bottom: .75rem;
+}
+
+@media screen and (min-width: 1024px){
+    .footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}

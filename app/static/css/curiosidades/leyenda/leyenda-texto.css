@@ -1,0 +1,5 @@
+.leyenda__texto{
+    font-family: var(--spline-mono-sans);
+    padding: 2rem auto;
+    margin-bottom: 2rem;
+}

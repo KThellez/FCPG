@@ -1,0 +1,13 @@
+.footer__copy{
+    color: var(--fuente-azul-claro);
+    margin-top: 0.5rem;
+    font-size: .75rem;
+    font-family: var(--spline-mono-sans);
+    font-weight: 300;
+}
+@media screen and (min-width: 768px){
+    .footer__copy {
+        text-align: center;
+        margin-top: 1rem;
+    }
+}

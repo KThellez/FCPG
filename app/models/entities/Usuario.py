@@ -7,11 +7,11 @@ class Usuario(UserMixin):
         self.nombre_usuario = nombre_usuario
         self.contrasena  = contrasena
         self.tipo_usuario_id = tipo_usuario_id
-
-    def encrypt__password(passw):
-        encriptado = generate_password_hash(passw)
-        coincidencia = check_password_hash(encriptado, passw)
-        return coincidencia
+    
+    
+    @classmethod
+    def verify__password(self, encriptado, passw):
+        return check_password_hash(encriptado, passw)
     
     def get_id(self):
         return str(self.id_usuario)

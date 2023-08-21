@@ -16,6 +16,8 @@
     --boton-azul: #2A6F97;
     --boton-azul-oscuro: #00161C;
     --boton-border-azul-claro: #00ACDB;
+    --boton-border-azul-oscuro: #103D4A;
+
 
     /*Fuente*/
     --fuente-ceniza-claro: #666666;
@@ -32,6 +34,8 @@
     --sirin-stencil: 'Sirin Stencil', sans-serif;
     --old-tt: 'Old Standard TT', sans-serif;
     --spline-sans: 'Spline Sans', sans-serif;
+
+
 
 }
 
@@ -58,6 +62,60 @@ body {
     border-radius: 5px;
     
 }
+.alerta {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 225px;
+    background-color: var(--fuente-azul-oscuro);
+    border: 1px solid var(--boton-azul-oscuro);
+    color: var(--background-blanco);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.alerta.cerrada {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.alerta:hover {
+    opacity: 1;
+}
+
+.cerrar_alerta {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: var(--background-blanco);
+    border: none;
+    background-color: transparent;
+    font-size: 1.2em;
+}
+
+.alerta.warning {
+    background-color: var(--boton-amarillo);
+}
+.alerta.success {
+    background-color: var(--boton-verde);
+}
+.alerta.error {
+    background-color: var(--boton-rojo);
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .alerta {
+        width: 325px;
+    }
+}
 
 /*Pantallas min 1024px w*/
 @media screen and (min-width: 1024px) {
@@ -75,7 +133,7 @@ body {
     }
     
 }
-@media screen and (min-width:  2.048px) {
+@media screen and (min-width:  2048px) {
     .container {
         padding-left: calc((80% - 940px)/2);
         padding-right: calc((80% - 940px)/2);
@@ -94,5 +152,4 @@ body {
         padding-left: calc((60% - 940px)/2);
         padding-right: calc((60% - 940px)/2);
     }
-
 }

@@ -1,0 +1,18 @@
+.tarjeta__texto{
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    text-align: justify;
+    font-size: 0.75rem;
+    font-family: var(--open-sans);
+}
+
+@media screen and (min-width: 768px){
+    .tarjeta__texto{
+        font-size: 0.85rem;
+    }
+}
+@media screen and (min-width: 1024px){
+    .tarjeta__texto{
+        font-size: 1rem;
+    }
+}

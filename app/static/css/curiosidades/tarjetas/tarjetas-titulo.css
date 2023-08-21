@@ -1,0 +1,5 @@
+.tarjetas__titulo{
+    font-family: var(--league-gothic);
+    color: var(--fuente-azul-claro);
+    font-size: 2rem;
+}

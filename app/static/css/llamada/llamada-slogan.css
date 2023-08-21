@@ -1,0 +1,19 @@
+.llamada__slogan {
+    font-family: var(--spline-mono-sans);
+    font-size: 0.4rem;
+    width: 100%;
+    letter-spacing: 1vw;
+    margin-bottom: 1rem;
+    color: var(--fuente-azul-medio);
+    font-weight: 400;
+}
+@media screen and (max-width: 767px){
+    .llamada__slogan {
+        font-size: 0.35rem; 
+    }
+}
+@media screen and (max-width: 600px){
+    .llamada__slogan {
+        font-size: 0.2rem; 
+    }
+}

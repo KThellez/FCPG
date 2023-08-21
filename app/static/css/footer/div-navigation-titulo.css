@@ -1,0 +1,5 @@
+.div__navigation__titulo{
+    color: var(--fuente-azul-medio);
+    font-family: var(--spline-mono-sans);
+    font-weight: 400;
+}

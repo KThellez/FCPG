@@ -5,10 +5,11 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from wtforms.validators import InputRequired
 from config import config
-from flask_login import LoginManager, login_user, logout_user
+from flask_login import LoginManager, login_user, logout_user, login_required
 from .consts import *
 
 from .models.ModeloNotasGrupo import ModeloNotasGrupo
+from .models.ModeloListarDocentes import ModeloListarDocentes
 from .models.ModeloUsuario import ModeloUsuario
 
 from .models.entities.Usuario import Usuario
@@ -38,14 +39,11 @@ def index():
     }
     return render_template('index.html', home = data)
 
-usuario_sign_in = None
 
 @app.route('/plataforma')
+@login_required
 def plataforma():
-    global usuario_sign_in
-    print('El valor es')
-    print(usuario_sign_in)
-    return render_template('plataforma.html', usuario_nombre = usuario_sign_in)
+    return render_template('plataforma.html')
 
 @app.before_request
 def before_request():
@@ -59,6 +57,7 @@ def after_request(response):
 
 
 @app.route('/temas')
+@login_required
 def temas():
     print('estamos realizando la petición en temas...')
     data = {
@@ -83,16 +82,14 @@ def temas():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    global usuario_sign_in
     if request.method == "POST":
         usuario = Usuario(None, request.form['user'], request.form['password'], None)
         usuario_logeado = ModeloUsuario.login(db, usuario)
         if usuario_logeado != None:
-            usuario_sign_in= usuario.nombre_usuario
             login_user(usuario_logeado)
+            flash(LOGIN_EXITOSO,SUCCESS)
             return redirect(url_for('plataforma'))
         else:
-            usuario_sign_in = None
             flash(LOGIN_CREDENCIALES_INVALIDAS, WARNING)
             return render_template('auth/login.html', form=form)
     else:
@@ -100,9 +97,8 @@ def login():
     
 
 @app.route('/logout')
+@login_required
 def logout():
-    global usuario_sign_in
-    usuario_sign_in = None
     logout_user()
     flash(LOGOUT_EXITOSO, SUCCESS)
     return redirect(url_for('login'))
@@ -110,30 +106,120 @@ def logout():
 
 @app.route('/register')
 def register():
+    form = LoginForm()    
+    return render_template('auth/registro_pregunta.html', form=form)
+
+@app.route('/registerEstudiante')
+def registerEstudiante():
+    form = LoginForm()    
+    return render_template('auth/registroEstudiante.html', form=form)
+
+@app.route('/registerDocente')
+def registerDocente():
+    form = LoginForm()    
+    return render_template('auth/registroDocente.html', form=form)
+
+@app.route('/cuenta')
+def cuenta():
+    pass
+
+@app.route('/sobre_nosotros')
+def sobre_nosotros():
+    pass
+
+@app.route('/contacto')
+def contacto():
     pass
 
 @app.route('/Modelo1')
+@login_required
 def modelo_uno():
-    pass
+    return render_template('modulos/ses.html')
 
 @app.route('/Modelo2')
+@login_required
 def modelo_dos():
-    pass
+    return render_template('modulos/winters.html')
 
 @app.route('/Modelo3')
+@login_required
 def modelo_tres():
-    pass
+    return render_template('modulos/arma.html')
+
+@app.route('/metodos')
+@login_required
+def metodos():
+    return render_template('modulos/metodos.html')
 
 
 #Errores!
 def pagina_no_encontrada(error):
     return render_template('errores/404.html'), 404
 
+def pagina_no_autorizada(error):
+    return redirect(url_for('login'))
 
 
-#RUTA DE PRUEBA
+
+#RUTA DE LISTADOS
 @app.route('/estudiantes')
+@login_required
 def listar_estudiantes():
+    estudiantes = {}
+    try:
+        estudiantes_lista = ModeloNotasGrupo.listar_estudiantes(db, '1', 'Grupo 2 - Docente Uno')
+        print("ABAJO LA LISTA QUE LLEGA DE ESTUDIANTE")
+        print(estudiantes_lista)
+        data={
+            'estudiante':estudiantes_lista
+        }
+        print('ESTO ESTA EN DATA')
+        print(data)
+        return render_template('listar_estudiantes.html', data=data)
+    except Exception as ex:
+        render_template('errores/error.html', mensaje=format(ex))
+    return render_template('errores/error.html')
+
+
+@app.route('/docentes')
+@login_required
+def listar_docentes():
+    docentes = {}
+    try:
+        docentes_lista = ModeloListarDocentes.listar_docentes(db)
+        print("ABAJO LA LISTA QUE LLEGA DE ESTUDIANTE")
+        print(docentes_lista)
+        data={
+            'docentes':docentes_lista
+        }
+        print('ESTO ESTA EN DATA')
+        print(data)
+        return render_template('listar_docentes.html', data=data)
+    except Exception as ex:
+        print(ex)
+    return []
+
+@app.route('/grupos')
+@login_required
+def listar_grupos():
+    estudiantes = {}
+    try:
+        estudiantes_lista = ModeloNotasGrupo.listar_estudiantes(db, '1', 'Grupo 2 - Docente Uno')
+        print("ABAJO LA LISTA QUE LLEGA DE ESTUDIANTE")
+        print(estudiantes_lista)
+        data={
+            'estudiante':estudiantes_lista
+        }
+        print('ESTO ESTA EN DATA')
+        print(data)
+        return render_template('listar_estudiantes.html', data=data)
+    except Exception as ex:
+        print(ex)
+    return []
+
+@app.route('/notas')
+@login_required
+def listar_notas():
     estudiantes = {}
     try:
         estudiantes_lista = ModeloNotasGrupo.listar_estudiantes(db, '1', 'Grupo 2 - Docente Uno')
@@ -151,10 +237,12 @@ def listar_estudiantes():
 
 
 
+
 def inicializar_app(config):
     app.config.from_object(config)
     csrf.init_app(app)
     app.register_error_handler(404, pagina_no_encontrada)
+    app.register_error_handler(401, pagina_no_autorizada)
     app.add_url_rule('/', view_func=index)
     app.run(port=7777)
     return app

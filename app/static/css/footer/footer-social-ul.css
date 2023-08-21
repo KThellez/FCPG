@@ -1,0 +1,12 @@
+.footer__social_ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+@media screen and (min-width: 768px){
+    .footer__social_ul {
+        display: flex;
+        gap: 1rem;
+    }
+}

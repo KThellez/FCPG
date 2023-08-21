@@ -1,0 +1,32 @@
+.head__navigation_ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 767px) {
+    .head__navigation_ul {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .head__navigation_ul {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .head__navigation_ul {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .head__navigation_ul{
+        display: flex;
+    }
+}

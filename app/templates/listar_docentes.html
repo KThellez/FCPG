@@ -1,0 +1,77 @@
+{% extends './layout.html' %}
+
+{% block tittle %} Listado de Estudiantes {% endblock %}
+{%block links_head%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/listado_estudiantes.css')}}">
+{%endblock%}
+
+{% block nav_list %} 
+
+
+{% if current_user.tipo_usuario_id.id == 1 %}
+<li class="head__enlace"><a href="{{url_for('listar_docentes')}}">Docentes</a></li>
+<li class="head__enlace"><a href="{{url_for('listar_estudiantes')}}">Estudiantes</a></li>
+{% endif %}
+
+{% if current_user.tipo_usuario_id.id == 2 %}
+<li class="head__enlace"><a href="{{url_for('listar_grupos')}}">Grupos</a></li>
+<li class="head__enlace"><a href="{{url_for('listar_estudiantes')}}">Estudiantes</a></li>
+{% endif %}
+
+{% if current_user.tipo_usuario_id.id == 3 %}
+<li class="head__enlace"><a href="{{url_for('listar_notas')}}">Notas</a></li>
+<li class="head__enlace"><a href="{{url_for('modelo_uno')}}">Simple</a></li>
+<li class="head__enlace"><a href="{{url_for('modelo_dos')}}">Winters</a></li>
+<li class="head__enlace"><a href="{{url_for('modelo_tres')}}">Arma</a></li>
+{% endif %}
+<li class="head__enlace"><a href="{{url_for('temas')}}">Temas</a></li>
+<li class="head__enlace"><a href="{{url_for('contacto')}}">Contacto</a></li>
+<li class="head__enlace boton__header"><a href="{{url_for('login')}}">{{ current_user.nombre_usuario }}</a></li>
+<li class="head__enlace"><a href="{{url_for('logout')}}">Logout</a></li>
+
+{% endblock %}
+
+{% block body_content %}
+<section class="titulo_tabla">
+    <h2>{{ current_user.nombre_usuario }}</h2>
+    <h3>tabla listado docentes</h3>
+</section>
+<section class="tabla_listado_estudiantes">
+    
+    {% if data.docentes|length > 0 %}
+    <table>
+        <tr>
+            <th>ID Docente</th>
+            <th colspan="2">Nombre del docente</th>
+            <th>ID Grupo</th>
+            <th>Nombre de Grupo</th>
+        </tr>
+        {% for l in data.docentes %}
+            <tr>
+                <td class="Id_Docente">{{ l[0].id_docente }}</td>
+                <td class="Nombre_del_docente">{{ l[1].primer_nombre }}</td>
+                <td class="Nombre_del_docente">{{ l[1].primer_apellido }}</td>
+                <td class="Id_Grupo">{{ l[2].id_grupo }}</td>
+                <td class="Nombre_de_Grupo">{{ l[2].nombre_grupo }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <br>
+    <h3 style="text-align: center; color:rgb(230, 216, 23);">No tenemos Estudiantes que mostrar</h3>
+    {% endif %}
+</section>
+
+
+{%endblock%}
+{%block footer_content%}
+    <li class="footer__enlace"><a href="#">Cuenta</a></li>
+    <li class="footer__enlace"><a href="{{url_for('logout')}}">Cerrar Sesión</a></li>
+    <li class="footer__enlace"><a href="#">Contacto</a></li>
+    
+{%endblock%}
+
+{% block customJS %}
+<script src="{{url_for('static', filename='../../../../static/js/alertas.js')}}"></script>
+{%endblock%}
